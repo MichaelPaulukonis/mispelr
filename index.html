@@ -43,18 +43,36 @@
       </div>
     </nav>
 
+      <form>
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
+
       <div class="container">
         <h1>Heloo, werld!</h1>
         <p>ReSpeller mangles your text in a variety of configurable ways.</p>
 
-        <div class="well" id="target" contenteditable>
-        ReSpeller mangles your text in a variety of configurable ways.
-        Edit this text and try it out!
-        </div>
+        <p>
+          <textarea class="form-control" rows="3" id="target">
+            ReSpeller mangles your text in a variety of configurable ways.
+            Edit this text and try it out!
+          </textarea>
+        </p>
 
-        <p><a class="btn btn-primary btn-lg" id="respell" href="#" role="button">ReSpell It! &raquo;</a></p>
+        <p>
+          <button type="submit" class="btn btn-primary btn-lg" id="respell">ReSpell It! &raquo;</button>
+          <label class="checkbox-inline">
+            <input type="checkbox" value="maledict"> Maledict
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" value="awfowell"> Awfowell
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" value="constonantSorrow"> ConstonantSorry
+          </label>
+          <label class="checkbox-inline">
+            <input type="checkbox" value="maxmister"> Maxmister
+          </label>
+        </p>
         <div class="well" id="respelled">
         [respelled text goes here]
         </div>
@@ -65,9 +83,8 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          <h2>Options</h2>
+
         </div>
         <div class="col-md-4">
           <h2>Heading</h2>
@@ -80,6 +97,7 @@
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
       </div>
+      </form>
 
       <hr>
 

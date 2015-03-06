@@ -4,7 +4,12 @@ $('#respell').click(function() {
 
     var text = $('#target').text();
 
-    // alert(text);
+    var values = {};
+    $("input:checked").each(function () {
+        values[$(this).val()] = true;
+    });
+
+    console.log(values);
 
     var rtext = respell(text);
 
