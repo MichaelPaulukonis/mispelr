@@ -43,7 +43,7 @@
       </div>
     </nav>
 
-      <form>
+      <!-- <form> -->
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
 
@@ -60,17 +60,20 @@
 
         <p>
           <button type="submit" class="btn btn-primary btn-lg" id="respell">ReSpell It! &raquo;</button>
-          <label class="checkbox-inline">
-            <input type="checkbox" value="maledict"> Maledict
+          <label class="radio-inline">
+            <input type="radio" name="spelltype" value="random" checked="checked"> Random
           </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" value="awfowell"> Awfowell
+          <label class="radio-inline">
+            <input type="radio" name="spelltype" value="maledict"> Maledict
           </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" value="constonantSorrow"> ConstonantSorry
+          <label class="radio-inline">
+            <input type="radio" name="spelltype" value="awfowell"> Awfowell
           </label>
-          <label class="checkbox-inline">
-            <input type="checkbox" value="maxmister"> Maxmister
+          <label class="radio-inline">
+            <input type="radio" name="spelltype" value="constonantSorrow"> ConstonantSorry
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="spelltype" value="maxmister"> Maxmister
           </label>
         </p>
         <div class="well" id="respelled">
@@ -97,7 +100,7 @@
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
       </div>
-      </form>
+      <!-- </form> -->
 
       <hr>
 
