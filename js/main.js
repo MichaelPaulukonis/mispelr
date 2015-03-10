@@ -2,18 +2,16 @@
 
 $('#respell').click(function() {
 
-    var text = $('#target').text();
+    var text = $('#target').val();
 
-    var values = {};
-    $("input:checked").each(function () {
-        values[$(this).val()] = true;
-    });
+    var method = $('input[name=spelltype]:checked').val();
 
-    console.log(values);
+    console.log(method);
 
-    var rtext = respell(text);
+    var rtext = respell(text, method);
 
     $('#respelled').text(rtext);
 
+    return false;
 
 });
