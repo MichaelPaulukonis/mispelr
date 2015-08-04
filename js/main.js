@@ -1,17 +1,42 @@
 // TODO: connect the button to do stuff
 
+
+var defaults = {
+    output: '[respelled text goes here]',
+    input: 'ReSpeller mangles your text in a variety of configurable ways.\nEdit this text and try it out!'
+};
+
+var reset = function(input, output) {
+
+    $('#respelled').text(output);
+    $('#target').val(input);
+};
+
+reset(defaults.input, defaults.output);
+
 $('#respell').click(function() {
 
-    var text = $('#target').val();
+    var text = $('#target').val().trim();
 
-    var method = $('input[name=spelltype]:checked').val();
+    if (text.length > 0) {
 
-    console.log(method);
+        var method = $('input[name=spelltype]:checked').val();
 
-    var rtext = respell(text, method);
+        console.log(method);
 
-    $('#respelled').text(rtext);
+        var rtext = respell(text, method);
+
+        $('#respelled').text(rtext);
+
+    }
 
     return false;
+
+});
+
+
+$('#clear').on("click", function() {
+
+    reset('', defaults.output);
 
 });
