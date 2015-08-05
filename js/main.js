@@ -10,9 +10,8 @@ var reset = function(input, output) {
 
     $('#respelled').text(output);
     $('#target').val(input);
-};
 
-reset(defaults.input, defaults.output);
+};
 
 $('#respell').click(function() {
 
@@ -35,8 +34,21 @@ $('#respell').click(function() {
 });
 
 
-$('#clear').on("click", function() {
+$('#clear').on('click', function() {
 
     reset('', defaults.output);
+    return false;
 
 });
+
+
+var startup = function() {
+
+    reset(defaults.input, defaults.output);
+
+    var $h = $('#hello');
+    var htext = $h.text();
+    var rtext = respell(htext);
+    $h.text(rtext);
+
+}();

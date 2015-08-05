@@ -104,10 +104,12 @@ var constonantsorrow = function(word) {
 var maxmister = function(word) {
     var wrod = word;
     logger('MAXMISTER');
-    // don't use the first char (too oCnfusing)
-    // one less than last char, since we do n+1
-    var pos1 = getRandom(word.length - 2) + 1;
-    wrod = word.substr(0, pos1) + word[pos1+1] + word[pos1] + word.substr(pos1+2);
+    if (word.length > 2) { // must be at least length 3
+        // don't use the first char (too oCnfusing)
+        // one less than last char, since we do n+1
+        var pos1 = getRandom(word.length - 2) + 1;
+        wrod = word.substr(0, pos1) + word[pos1+1] + word[pos1] + word.substr(pos1+2);
+    }
     return wrod;
 };
 
