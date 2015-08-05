@@ -1,3 +1,7 @@
+// TODO: hey, make this into an object SVP
+// why?
+// well, name-space hygeine, for one
+
 var spelltype = {
     random: 'random',
     maledict: 'maledict',
@@ -16,8 +20,6 @@ var logger = function(msg, priority) {
     if (config.log || priority) console.log(msg);
 };
 
-// adding to array.prototype caused issues with nlp_compromise
-// get random element from array
 var pick = function(arr) {
     return arr[Math.floor(Math.random()*arr.length)];
 };
@@ -156,6 +158,22 @@ var randomRespell = function(word) {
 
 };
 
+var getTextArray = function(text) {
+
+    var words = [];
+    if (typeof Lexer !== 'undefined') {
+        // TODO: fails for David23 is in da hizzouse!
+        // since it will lex into [ "David", "23", "is", "in", "da", "hizzouse", "!" ]
+        // and current replacement strategy will fail on, say, "Davidd" into "David23" in the source
+        words = new Lexer().lex(text);
+    } else {
+        words = phrase.split(/\W+/);
+    }
+
+    return words;
+
+};
+
 // creative respellings
 // http://security.stackexchange.com/questions/80392/never-spell-a-word-the-same-way-twice
 // http://rickconner.net/spamweb/tricks.html#misspelling
@@ -166,18 +184,7 @@ var respell = function(phrase, method) {
 
     var redone = phrase;
 
-    // TODO: new the whole pos.js thing included, here
-    // AAARGH. that does complicate things.
-    // or... can I split it differentlu?
-    // if pos is not available?
-    // provide an alternate source....
-    // var words = new pos.Lexer().lex(phrase);
-    var words = [];
-    if (typeof Lexer !== 'undefined') {
-        words = new Lexer().lex(phrase);
-    } else {
-        words = phrase.split(/\W+/);
-    }
+    var words = getTextArray(phrase);
 
     logger(words);
 
