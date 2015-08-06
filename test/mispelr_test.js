@@ -20,16 +20,34 @@ describe("isAlpha", function() {
     });
 });
 
-// TODO: break down into sub-expectations
-// since David and 23 should be joined up, IMHO
-describe("textArray", function() {
-    it("should chop up 'David23 is in da hizzouse!' the way we expect", function() {
-        var text = "David23 is in da hizzouse!";
-        var words = getTextArray(text);
-        expect(words.length).to.equal(7);
-        expect(words[0]).to.equal("David");
-        expect(words[1]).to.equal("23");
-        expect(words[6]).to.equal("!");
+
+var getTokenTestData = function(text) {
+    return  {
+        text: text,
+        tokens: getTextArray(text)
+    };
+};
+
+describe("textArray tests with 'David23 is in da hizzouse! ", function() {
+    it("should chop up text into 7 tokens", function() {
+        var data = getTokenTestData("David23 is in da hizzouse!");
+        expect(data.tokens.length).to.equal(7);
+
+    });
+
+    it("first token in the text is David", function() {
+        var data = getTokenTestData("David23 is in da hizzouse!");
+        expect(data.tokens[0]).to.equal("David");
+    });
+
+    it("second token in the text is '23'", function() {
+        var data = getTokenTestData("David23 is in da hizzouse!");
+        expect(data.tokens[1]).to.equal("23");
+    });
+
+    it("'!' is the last token in 'David23 is in da hizzouse!'", function() {
+        var data = getTokenTestData("David23 is in da hizzouse!");
+        expect(data.tokens[data.tokens.length-1]).to.equal("!");
     });
 
 });

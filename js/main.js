@@ -3,7 +3,7 @@
 
 var defaults = {
     output: '[respelled text goes here]',
-    input: 'ReSpeller mangles your text in a variety of configurable ways.\nEdit this text and try it out!'
+    input: 'ReSpeller mangles your text in a variety of configurable ways.\n\nEdit this text and try it out!'
 };
 
 var reset = function(input, output) {

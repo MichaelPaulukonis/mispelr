@@ -115,10 +115,6 @@ var maxmister = function(word) {
     return wrod;
 };
 
-// TODO: while this exludes numbers and punctuation
-// it also excludes things like 'win32' and 'Wendy237'
-// TODO: build unit tests
-// HAS_ALPHA might be a better test, for these purposes
 var isAlpha = function(text) {
 
     return /^[a-z]+/i.test(text);
@@ -211,7 +207,6 @@ var respell = function(phrase, method) {
             break;
         }
 
-        // var wrod = randomRespell(word);
         if (isAlpha(word)) {
             logger('replacing "' + word + '" with "' + wrod + '"');
             // this is crap, if the same word occurs more than once
@@ -219,7 +214,6 @@ var respell = function(phrase, method) {
             redone = redone.replace(new RegExp('\\b' + word + '\\b'), wrod);
         }
     }
-
 
     return redone;
 

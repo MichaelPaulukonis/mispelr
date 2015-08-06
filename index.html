@@ -52,7 +52,7 @@
         <p>ReSpeller mangles your text in a variety ways.</p>
         <form>
         <p>
-          <textarea class="form-control" rows="3" id="target">
+          <textarea class="form-control" rows="5" id="target">
           </textarea>
         </p>
 
@@ -75,9 +75,11 @@
           </label>
           <button class="btn btn-primary btn-lg" id="clear">&laquo; clear</button>
         </p>
-        <div class="well" id="respelled">
-        [respelled text goes here]
-        </div>
+        <!-- <div class="well" id="respelled"> -->
+        <!-- [respelled text goes here] -->
+        <!-- </div> -->
+        <textarea class="form-control" rows="5" id="respelled">
+          </textarea>
       </form>
       </div>
     </div>
@@ -87,7 +89,12 @@
       <div class="row">
         <div class="col-md-4">
           <h2>Options</h2>
-
+          <ul>
+            <li><strong>Maledict</strong> from a dictionary of common misspellings</li>
+            <li><strong>Awfowell</strong> vowels are exteeeeendeed (at random)</li>
+            <li><strong>ContonantSorry</strong> consonants are duplicated (at random)</li>
+            <li><strong>Maxmister</strong> words (longer than 2 letters) are mixed about</li>
+          </ul>
         </div>
         <div class="col-md-4">
           <h2>Heading</h2>
