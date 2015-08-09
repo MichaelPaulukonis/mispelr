@@ -27,14 +27,18 @@ var objectFromPairs = function(parr) {
   for (var i = 0; i < parr.length; i++) {
     var t = parr[i];
     var k = t[0][0];
-    o[k] = [t[0][1], t[1][1]];
+    console.log(t, k);
+    o[k] = [];
+    for (var j = 0; j < t.length; j++) {
+      o[k].push(t[j][1]);
+    }
   }
 
   return o;
 
 };
 
-var process = function(file, output) {
+var convert = function(file, output) {
 
   var fs = require('fs');
 
@@ -44,14 +48,18 @@ var process = function(file, output) {
       return console.log(err);
     }
 
+    var hphones = {};
     var lines = data.trim().split('\n');
-
     lines.forEach(function(line) {
-      var words = line.split(',');
-      var pairs = pairwise(words);
+      if (line.indexOf('#') === 0) return;
+      var words = line.trim().split(',');
+      var pairs = objectFromPairs(pairwise(words));
+      for (var key in pairs) {
+        hphones[key] = pairs[key];
+      }
     });
 
-    fs.writeFile(output, unis.join('\n'));
+    fs.writeFile(output, JSON.stringify(hphones));
     return console.log(output);
 
   });
@@ -78,4 +86,4 @@ program
   .parse(process.argv);
 
 
-process(program.input, program.output);
+convert(program.input, program.output);

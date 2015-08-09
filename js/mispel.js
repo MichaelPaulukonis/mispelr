@@ -7,7 +7,8 @@ var spelltype = {
     maledict: 'maledict',
     awfowell: 'awfowell',
     constonantSorrow: 'constonantSorrow',
-    maxmister: 'maxmister'
+    maxmister: 'maxmister',
+    homophilia: 'homophilia'
 };
 
 var config = {
@@ -72,6 +73,20 @@ var maledictor = function(word) {
     }
     return wrod;
 };
+
+var homophilia = function(word) {
+    var wrod = word;
+    logger('HOMOPHILIA');
+    var found = homophones[word.toLowerCase()];
+    if (found) {
+        wrod = pick(found);
+        if (isFirstLetterUpperCase(word)) {
+            wrod = capitalizeWord(wrod);
+        }
+    }
+    return wrod;
+};
+
 
 var awfowell = function(word) {
     var wrod = '';
@@ -139,6 +154,8 @@ var randomRespell = function(word) {
             wrod = awfowell(word);
         } else if (coinflip()) {
             wrod = constonantsorrow(word);
+        } else if (coinflip()) {
+            wrod = homophilia(word);
         } else {
             // 4-letter+ words ("in" and "and" are too annoying mixed up)
             if (word.length > 3) {
@@ -202,6 +219,9 @@ var respell = function(phrase, method) {
         case spelltype.maxmister:
             wrod = maxmister(word);
             break;
+        case spelltype.homophilia:
+            wrod = homophilia(word);
+            break;
         default:
             wrod = randomRespell(word);
             break;
@@ -211,7 +231,12 @@ var respell = function(phrase, method) {
             logger('replacing "' + word + '" with "' + wrod + '"');
             // this is crap, if the same word occurs more than once
             // also unsure how to skip some things. AWKWARD.
+            try {
             redone = redone.replace(new RegExp('\\b' + word + '\\b'), wrod);
+            } catch(ex) {
+                console.log(ex);
+                debugger;
+            }
         }
     }
 
