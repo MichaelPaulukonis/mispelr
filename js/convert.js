@@ -5,7 +5,7 @@
 
 // see pairwise combinations @ http://stackoverflow.com/a/14007148/41153
 
-// 'bald,'balled','bawled' :=
+// 'bald','balled','bawled' :=
 // [ [[bald, balled], [bald, bawled]], [[balled, bald],[balled,[bawled]], [[bawled,bald],[bawled,balled]] ]
 // so THIS has to be reprocessed....
 var pairwise = function(arr) {
@@ -16,9 +16,22 @@ var pairwise = function(arr) {
       }
     });
     tmp.splice(tmp.indexOf(undefined), 1); // because there is now one undefined index we must remove it.
-    console.log(tmp);
     return tmp;
   });
+};
+
+var objectFromPairs = function(parr) {
+
+  var o = {};
+
+  for (var i = 0; i < parr.length; i++) {
+    var t = parr[i];
+    var k = t[0][0];
+    o[k] = [t[0][1], t[1][1]];
+  }
+
+  return o;
+
 };
 
 var process = function(file, output) {
