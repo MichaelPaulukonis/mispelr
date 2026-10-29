@@ -1,0 +1,302 @@
+/* Cyanotype: light only, one accent, rules instead of boxes */
+:root {
+  --bg: #fefefe;
+  --fg: #1e1e1e;
+  --muted: #5f6d6c;
+  --rule: #dedede;
+  --panel: #f3f3f1;
+  --accent: #1f5fa8;
+  --on-accent: #fefefe;
+  --sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --gutter: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+/* 12-column grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  padding: 0 var(--gutter);
+}
+
+.span-4 {
+  grid-column: span 4;
+}
+.span-12 {
+  grid-column: 1 / -1;
+}
+.right {
+  text-align: right;
+}
+
+.label,
+.step-h,
+.legend,
+.pill,
+button {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Hero: live readout on the left, title on the right */
+.hero {
+  padding-top: 28px;
+  padding-bottom: 40px;
+  /* a long respelled title bleeds off the right edge, never wraps, and
+     never causes a sideways page scroll */
+  overflow-x: clip;
+}
+
+.hero .meta {
+  grid-column: 1 / span 4;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--muted);
+  padding-top: 12px;
+}
+
+.hero .meta b {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.hero .body {
+  grid-column: 5 / span 8;
+}
+
+.display {
+  margin: 0;
+  font-weight: 700;
+  font-size: clamp(72px, 15vw, 240px);
+  line-height: 0.85;
+  /* tight leading clips descenders into the next row */
+  padding-bottom: 0.16em;
+  letter-spacing: -0.05em;
+  color: var(--accent);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+.lede {
+  max-width: 34em;
+  margin: 24px 0 0;
+  font-size: 19px;
+  line-height: 1.45;
+}
+
+/* Steps */
+.step {
+  border-top: 1px solid var(--fg);
+  padding-top: 10px;
+  padding-bottom: 32px;
+}
+
+.work .step:nth-child(1) {
+  grid-column: 1 / span 4;
+}
+.work .step:nth-child(2),
+.work .out {
+  grid-column: 5 / span 8;
+}
+
+.step-h {
+  display: flex;
+  gap: 1.2em;
+  margin: 0 0 18px;
+}
+
+.step-h .num {
+  color: var(--accent);
+}
+
+textarea {
+  width: 100%;
+  min-height: 180px;
+  resize: vertical;
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 12px;
+  font: 16px/1.5 var(--sans);
+}
+
+textarea:focus,
+button:focus-visible,
+.chance input:focus-visible,
+.method:has(input:focus-visible) .pill {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Spelltype picker: outlined pills, the one rounded thing */
+.methods {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+.methods li {
+  border-bottom: 1px solid var(--rule);
+}
+
+/* The whole row is the label, so the description selects too */
+.method {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 9px 0;
+  cursor: pointer;
+}
+
+.pill {
+  flex: none;
+  display: inline-block;
+  border: 1px solid var(--muted);
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: var(--muted);
+}
+
+.method input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.method:hover .pill {
+  border-color: var(--fg);
+  color: var(--fg);
+}
+
+.method:has(input:checked) .pill {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.methods small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Chance slider */
+.chance {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+  color: var(--muted);
+}
+
+.chance input {
+  flex: 1;
+  min-width: 0;
+  accent-color: var(--accent);
+}
+
+.chance output {
+  min-width: 4ch;
+  text-align: right;
+  color: var(--fg);
+}
+
+button {
+  margin-top: 20px;
+  background: var(--fg);
+  color: var(--bg);
+  border: 0;
+  border-radius: 0;
+  padding: 14px 22px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.output {
+  margin: 0;
+  font-weight: 300;
+  font-size: clamp(28px, 4.6vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.output mark {
+  background: none;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.legend {
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
+  padding-bottom: 40px;
+  color: var(--muted);
+}
+
+.legend a {
+  text-decoration: none;
+}
+
+.legend a:hover {
+  color: var(--accent);
+}
+
+.legend .key::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  background: var(--accent);
+  vertical-align: -1px;
+}
+
+@media (max-width: 760px) {
+  .span-4,
+  .hero .meta,
+  .hero .body,
+  .work .step:nth-child(n) {
+    grid-column: 1 / -1;
+  }
+  .legend > div + div {
+    margin-top: 8px;
+  }
+  .right {
+    text-align: left;
+  }
+  .methods {
+    grid-template-columns: 1fr;
+  }
+}

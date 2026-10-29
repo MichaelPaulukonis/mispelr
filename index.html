@@ -1,140 +1,76 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <style>
-            body {
-                padding-top: 50px;
-                padding-bottom: 20px;
-            }
-        </style>
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
-
-        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">ReSpeller</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-        </div><!--/.navbar-collapse -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>mispelr - a machine for misspelling</title>
+    <meta
+      name="description"
+      content="Mispelr mangles your text: real-world misspellings, homophones, doubled letters, transpositions."
+    />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600;700&family=JetBrains+Mono:wght@500&display=swap"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <section class="hero grid">
+      <div class="meta label" aria-live="polite">
+        <span><b>Method</b> <span id="ro-method">&mdash;</span></span>
+        <span><b>Chance</b> <span id="ro-chance">&mdash;</span></span>
+        <span><b>Changed</b> <span id="ro-changed">&mdash;</span></span>
       </div>
-    </nav>
-
-      <!-- <form> -->
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-
-      <div class="container">
-        <h1 id="hello">Hello, world!</h1>
-        <p>ReSpeller mangles your text in a variety ways.</p>
-        <form>
-        <p>
-          <textarea class="form-control" rows="5" id="target">
-          </textarea>
-        </p>
-
-        <p>
-          <button class="btn btn-primary btn-lg" id="respell">ReSpell It! &raquo;</button>
-          <label class="radio-inline">
-            <input type="radio" name="spelltype" value="random" checked="checked"> Random
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="spelltype" value="maledict"> Maledict
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="spelltype" value="homophilia"> Homophilia
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="spelltype" value="awfowell"> Awfowell
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="spelltype" value="constonantSorrow"> ConstonantSorry
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="spelltype" value="maxmister"> Maxmister
-          </label>
-          <button class="btn btn-primary btn-lg" id="clear">&laquo; clear</button>
-        </p>
-        <!-- <div class="well" id="respelled"> -->
-        <!-- [respelled text goes here] -->
-        <!-- </div> -->
-        <textarea class="form-control" rows="5" id="respelled">
-          </textarea>
-      </form>
+      <div class="body">
+        <h1 class="display" data-respell="mispelr" title="clik me">mispelr</h1>
+        <p class="lede">A machine for misspelling.</p>
       </div>
-    </div>
+    </section>
 
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Options</h2>
-          <ul>
-            <li><strong>Maledict</strong> from a dictionary of common misspellings</li>
-            <li><strong>Homophilia</strong> sounds like a homophone</li>
-            <li><strong>Awfowell</strong> vowels are exteeeeendeed (at random)</li>
-            <li><strong>ContonantSorry</strong> consonants are duplicated (at random)</li>
-            <li><strong>Maxmister</strong> words (longer than 2 letters) are mixed about</li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h2>github</h2>
-          <p><a href="https://github.com/MichaelPaulukonis/textgen-monorepo/tree/main/libs/mispelr/web">github repo</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>michael paulukonis</h2>
-          <p><a href="https://michaelpaulukonis.github.io/">michaelpaulukonis.github.io</a></p>
-        </div>
+    <main class="grid work">
+      <section class="step">
+        <h2 class="step-h"><span class="num">01</span>Input</h2>
+        <textarea id="input" spellcheck="false" aria-label="Text to misspell">There their they are, where we were. Mispelr mangles your text in a variety of configurable ways - edit this and try it out.</textarea>
+      </section>
+
+      <section class="step">
+        <h2 class="step-h"><span class="num">02</span>Method</h2>
+        <ul class="methods">
+          <li><label class="method"><input type="radio" name="spelltype" value="random" checked /><span class="pill">Random</span><small>any of the five, word by word</small></label></li>
+          <li><label class="method"><input type="radio" name="spelltype" value="maledict" /><span class="pill">Maledict</span><small>real-world misspellings</small></label></li>
+          <li><label class="method"><input type="radio" name="spelltype" value="homophilia" /><span class="pill">Homophilia</span><small>swaps in homophones</small></label></li>
+          <li><label class="method"><input type="radio" name="spelltype" value="awfowell" /><span class="pill">Awfowell</span><small>doubles the vowels</small></label></li>
+          <li><label class="method"><input type="radio" name="spelltype" value="constonantSorrow" /><span class="pill">ConstonantSorrow</span><small>doubles the consonants</small></label></li>
+          <li><label class="method"><input type="radio" name="spelltype" value="maxmister" /><span class="pill">Maxmister</span><small>transposes letters</small></label></li>
+        </ul>
+        <label class="chance label">Chance
+          <input id="chance" type="range" min="0" max="100" step="5" value="50" />
+          <output id="chance-out" for="chance">50%</output>
+        </label>
+        <button id="respell" type="button">Respell &nbsp;&#8984;&#8629;</button>
+      </section>
+
+      <section class="step out">
+        <h2 class="step-h"><span class="num">03</span>Output</h2>
+        <p id="output" class="output" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <footer class="legend grid">
+      <div class="span-4"><span class="key">Changed word</span></div>
+      <div class="span-4">
+        <a href="https://github.com/MichaelPaulukonis/textgen-monorepo/tree/main/libs/mispelr">GitHub</a>
+        &middot;
+        <a href="https://michaelpaulukonis.github.io/">Michael Paulukonis</a>
       </div>
-      <!-- </form> -->
+      <div class="span-4 right">node-mispelr <span id="version"></span> &middot; 2015&ndash;2026</div>
+    </footer>
 
-      <hr>
-
-      <footer>
-        <p>&copy; Michael J. Paulukonis 2015</p>
-      </footer>
-    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-
-        <script src="js/vendor/bootstrap.min.js"></script>
-
-        <script src="js/maledict.js"></script>
-        <script src="js/homophones.js"></script>
-        <script src="js/lexer.js"></script>
-        <script src="js/mispel.js"></script>
-        <script src="js/main.js"></script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
-    </body>
+    <script src="js/mispelr.bundle.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>
