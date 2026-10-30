@@ -4017,9 +4017,9 @@ var mispelr = (() => {
         "read": ["reed"],
         "red": ["read"],
         "reed": ["read"],
-        "real": ["reel", "and riel"],
-        "reel": ["real", "and riel"],
-        "and riel": ["real", "reel"],
+        "real": ["reel", "riel"],
+        "reel": ["real", "riel"],
+        "riel": ["real", "reel"],
         "recede": ["reseed"],
         "reseed": ["recede"],
         "reek": ["wreak"],
@@ -4162,9 +4162,9 @@ var mispelr = (() => {
         "tents": ["tense"],
         "than": ["then"],
         "then": ["than"],
-        "there": ["their", "and they're"],
-        "their": ["there", "and they're"],
-        "and they're": ["there", "their"],
+        "there": ["their", "they're"],
+        "their": ["there", "they're"],
+        "they're": ["there", "their"],
         "threw": ["through"],
         "through": ["threw"],
         "throne": ["thrown"],
@@ -4177,9 +4177,9 @@ var mispelr = (() => {
         "tire": ["tier"],
         "tighten": ["titan"],
         "titan": ["tighten"],
-        "to": ["too", "and two"],
-        "too": ["to", "and two"],
-        "and two": ["to", "too"],
+        "to": ["too", "two"],
+        "too": ["to", "two"],
+        "two": ["to", "too"],
         "toad": ["toed", "towed"],
         "toed": ["toad", "towed"],
         "towed": ["toad", "toed"],
@@ -4219,9 +4219,9 @@ var mispelr = (() => {
         "wore": ["war"],
         "ward": ["warred"],
         "warred": ["ward"],
-        "ware": ["wear", "and where"],
-        "wear": ["ware", "and where"],
-        "and where": ["ware", "wear"],
+        "ware": ["wear", "where"],
+        "wear": ["ware", "where"],
+        "where": ["ware", "wear"],
         "warn": ["worn"],
         "worn": ["warn"],
         "wax": ["whacks"],
@@ -4577,8 +4577,8 @@ var mispelr = (() => {
     "libs/mispelr/package.json"(exports, module) {
       module.exports = {
         name: "node-mispelr",
-        version: "0.1.0",
-        description: "Mispells words in several ways.",
+        version: "0.1.1",
+        description: "Misspells text six ways: dictionary typos, doubled letters, swapped letters, homophones. Seedable.",
         main: "index.js",
         files: [
           "index.js",
@@ -4593,7 +4593,17 @@ var mispelr = (() => {
           url: "https://github.com/MichaelPaulukonis/textgen-monorepo.git",
           directory: "libs/mispelr"
         },
+        homepage: "https://michaelpaulukonis.github.io/mispelr/",
         keywords: [
+          "misspelling",
+          "misspell",
+          "typo",
+          "typos",
+          "homophone",
+          "respell",
+          "generative-text",
+          "procjam",
+          "nanogenmo",
           "text",
           "nlp"
         ],
@@ -4607,7 +4617,7 @@ var mispelr = (() => {
           mocha: "^6.1.4"
         },
         engines: {
-          node: "^22.16.0"
+          node: ">=18"
         }
       };
     }
